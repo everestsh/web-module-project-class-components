@@ -4,14 +4,17 @@ class TodoForm extends React.Component {
   // Constructor with state
 
   handleChanges = e => {
-    
+    this.setState({
+        ...this.state,
+        input: e.target.value
+      });
   };
   handleSubmit = (e)=>{
     e.preventDefault();
     console.log("Add click === ", this.props)
     // console.log("Add click === ", this.state.input)
-    this.props.handleAddItem()
-    //this.props.handleAddItem('Chips')
+    //this.props.handleAddItem()
+    this.props.handleAddItem('Learn setState()')
     // this.props.handleAddItem(this.props.input);
     // this.props.handleAddItem(this.state.input);
   }
@@ -21,7 +24,7 @@ class TodoForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         
-        <input type="text" name="item" />
+        <input onChange={this.handleChanges} type="text" name="item" />
         <button>Add Todo</button>
       </form>
     );

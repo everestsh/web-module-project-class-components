@@ -40,8 +40,8 @@ class App extends React.Component {
   handleAddItem = (task) => {
   
     const newItem = {
-      //task: task,
-      task: "task",
+      task: task,
+      // task: "Learn setState()",
       id: Date.now(),
       completed: false
     };
