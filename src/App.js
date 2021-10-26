@@ -37,7 +37,20 @@ class App extends React.Component {
       //todolists: this.state.todolists.filter(item=> !item.completed)
     });
   }
+  handleAddItem = (task) => {
   
+    const newItem = {
+      //task: task,
+      task: "task",
+      id: Date.now(),
+      completed: false
+    };
+    this.setState({
+      ...this.state,
+      todolists: [...this.state.todolists, newItem]
+    });
+    console.log("index: handleAddItem")
+  }
   
   render() {
     return (
@@ -48,7 +61,7 @@ class App extends React.Component {
 
         <TodoList todolists={this.state.todolists} />
         <div className="header">
-           <TodoForm />
+           <TodoForm handleAddItem={this.handleAddItem}/>
            <button onClick={this.handleClear} className="clear-btn">Clear completed</button>
          </div>
         
