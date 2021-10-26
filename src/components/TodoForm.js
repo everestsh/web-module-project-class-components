@@ -12,11 +12,11 @@ class TodoForm extends React.Component {
   handleSubmit = (e)=>{
     e.preventDefault();
     console.log("Add click === ", this.props)
-    // console.log("Add click === ", this.state.input)
+    //console.log("Add click === ", this.state.input)
     //this.props.handleAddItem()
-    this.props.handleAddItem('Learn setState()')
-    // this.props.handleAddItem(this.props.input);
-    // this.props.handleAddItem(this.state.input);
+    //this.props.handleAddItem('Learn setState()')
+    //this.props.handleAddItem(this.props.input);
+    this.props.handleAddItem(this.state.input);
   }
 
 
