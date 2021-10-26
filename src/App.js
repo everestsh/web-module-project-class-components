@@ -51,6 +51,22 @@ class App extends React.Component {
     });
     console.log("index: handleAddItem")
   }
+
+  handleToggleItem = (item) => {
+    console.log("index: handleToggleItem ", item.task)
+    this.setState({
+      ...this.state,
+      todolists: this.state.todolists.map(todolist => {
+        if (todolists.id === item.id) {
+          return {
+            ...todolist,
+            completed: !todolist.completed 
+          }
+        }
+        return todolists;
+      })
+    });
+  }
   
   render() {
     return (
@@ -59,7 +75,7 @@ class App extends React.Component {
         {/* <h2>Welcome to your Todo App!</h2> */}
 
 
-        <TodoList todolists={this.state.todolists} />
+        <TodoList handleToggleItem={this.handleToggleItem}  todolists={this.state.todolists} />
         <div className="header">
            <TodoForm handleAddItem={this.handleAddItem}/>
            <button onClick={this.handleClear} className="clear-btn">Clear completed</button>
