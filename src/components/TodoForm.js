@@ -20,7 +20,8 @@ class TodoForm extends React.Component {
     handleClick = e => {
         e.preventDefault();
         console.log("TodoFrom add")
-        this.props.handleAddItem("ddd")
+        // this.props.handleAddItem("ddd")
+        this.props.handleAddItem(this.state.input)
     }
     
 
