@@ -28,14 +28,27 @@ class App extends React.Component {
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
   
-  handleToggle = () =>{
-
+  handleToggleItem = (item) => {
+    console.log("handleToggleItem")
+    this.setState({
+      ...this.state,
+      todolists: this.state.todolists.map(todolist=>{
+        if(todolist.id === item.id){
+          return{
+            ...todolist,
+            completed: !todolist.completed
+          }
+        }
+        return todolist
+        
+      })
+    })
   }
 
   handleClearItem = () =>{
     this.setState({
       ...this.state,
-      todolists: todolists.filter(item => (!item.completed))
+      todolists: this.state.todolists.filter(item => !item.completed)
     })
   }
   handleAddItem = item => {
@@ -57,7 +70,7 @@ class App extends React.Component {
       <div className="App">
          <h1>Todo List: MVP</h1>
         {/* <h2>Welcome to your Todo App!</h2> */}
-        <TodoList todolists={this.state.todolists}/>
+        <TodoList handleToggleItem={this.handleToggleItem} todolists={this.state.todolists}/>
         <TodoForm handleAddItem={this.handleAddItem} />
         <button onClick={this.handleClearItem} className="clear-btn">Clear Purchased</button>
       </div>

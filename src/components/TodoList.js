@@ -11,7 +11,7 @@
       return (
         <div className="todo-list">
           {props.todolists.map(item => (
-            <Todo  key={item.id} item={item} />
+            <Todo  handleToggleItem={props.handleToggleItem} key={item.id} item={item} />
           ))}
         </div>
       );
