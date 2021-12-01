@@ -2,12 +2,13 @@ import React from 'react';
 
 import TodoForm from "./components/TodoForm"
 import TodoList from "./components/TodoList"
-import './style.css';
+import './components/Todo.css'
+// import './style.css';
 const todolists =[
   {
     task: 'Organize Garage',
     id: 1528817077286,
-    completed: false
+    completed: true
   },
   {
     task: 'Bake Cookies',
@@ -26,6 +27,18 @@ class App extends React.Component {
   }
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
+  
+  handleToggle = () =>{
+
+  }
+
+  handleClearItem = () =>{
+    this.setState({
+      ...this.state,
+      todolists: todolists.filter(item => (!item.completed))
+    })
+  }
+  
   render() {
     return (
       <div className="App">
@@ -33,7 +46,7 @@ class App extends React.Component {
         {/* <h2>Welcome to your Todo App!</h2> */}
         <TodoList todolists={this.state.todolists}/>
         <TodoForm/>
-
+        <button onClick={this.handleClearItem} className="clear-btn">Clear Purchased</button>
       </div>
     );
   }
